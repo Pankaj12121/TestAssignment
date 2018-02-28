@@ -1,0 +1,10 @@
+package com.tieto.frameworkServices.core;
+
+public enum WaitType {
+
+	    WAITFORELEMENTTOBEEENABLED, 
+	    WAITFORELEMENTTOBEDISPLAYED, 
+	    WAITFORELEMENTTOBECLICKABLE, 
+	    WAITFORELEMENTTODISAPPEAR
+	}
+

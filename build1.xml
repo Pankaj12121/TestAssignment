@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="TestNGTest" default="CompleteSmokeSuite"  basedir=".">
+	<property name="classes.dir" value="bin"/>
+	<property name="src.dir" value="src"/>
+	<property name="lib.dir" value="libs"/>
+	<property environment="env" />
+	
+	<path id="libs">
+		<fileset dir="C:\Users\pankajs\.m2\repository">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement path="${basedir}/${classes.dir}"/>
+	</path>
+	
+	
+	
+	<!-- Complies the java files -->
+	<target name="compile">
+		<echo>Compiling...</echo>
+		<javac debug="true" srcdir="${src.dir}" destdir="${classes.dir}" classpathref="libs"/>
+	</target>
+
+	<!-- <target name="runTests" description="Running tests" depends="compile">
+		<echo>Running Tests...</echo>
+		<taskdef resource="testngtasks" classpathref="libs"/>
+		<testng outputDir="${TestNGResults}" haltonfailure="false" classpathref="libs" verbose="0"
+			listeners="org.uncommons.reportng.HTMLReporter,org.uncommons.reportng.JUnitXMLReporter">
+	        <xmlfileset dir="${basedir}" includes="TestNG.xml" /> 			
+			<jvmarg value="-Xmx512m"/>
+		</testng>
+	</target> -->
+	
+	<target name="runTests" description="Running tests" depends="compile">
+		<echo>Running Tests...</echo>
+		<java  dir="${basedir}\${classes.dir}" fork="true" failonerror="yes" classname="com.demo.TestLauncher"  classpathref="libs">
+		</java>
+				
+		<!-- 
+		<taskdef resource="testngtasks" classpathref="libs"/>		
+		<testng outputDir="${TestNGResults}" haltonfailure="false" classpathref="libs" verbose="0"
+			listeners="org.uncommons.reportng.HTMLReporter,org.uncommons.reportng.JUnitXMLReporter">
+	        <xmlfileset dir="${basedir}" includes="TestNG.xml" /> 			
+			<jvmarg value="-Xmx512m"/>
+		</testng>--> 
+	</target>
+	
+	<target name="CompleteSmokeSuite">
+		<antcall target="runTests"/>
+	</target>
+</project>
+

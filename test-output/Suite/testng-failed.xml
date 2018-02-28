@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <parameter name="browsername" value="chrome"/>
+  <parameter name="browserversion" value="58"/>
+  <parameter name="platform" value="windows"/>
+  <test name="Chrome(failed)">
+    <classes>
+      <class name="com.tieto.TestLauncher">
+        <methods>
+          <include name="StartExecution" invocation-numbers="0"/>
+        </methods>
+      </class> <!-- com.tieto.TestLauncher -->
+    </classes>
+  </test> <!-- Chrome(failed) -->
+</suite> <!-- Failed suite [Suite] -->
